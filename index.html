@@ -540,6 +540,78 @@
             background: linear-gradient(135deg, #218838, #1ea883);
         }
 
+        /* Footer Styles */
+        .footer {
+            background: #4a5568;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-icon {
+            width: 50px;
+            height: 50px;
+            background: #3182ce;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-icon:hover {
+            background: #2c5282;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .footer {
+            background: #2d3748;
+        }
+
+        body.dark-mode .footer-icon {
+            background: #4299e1;
+        }
+
+        body.dark-mode .footer-icon:hover {
+            background: #3182ce;
+        }
+
+        /* Hero Name Highlight */
+        .hero-name {
+            font-size: 3.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        body.dark-mode .hero-name {
+            background: linear-gradient(135deg, #8bb6ff, #a78bfa);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-menu {
@@ -559,10 +631,6 @@
 
             .hero h1 {
                 font-size: 2rem;
-            }
-
-            .hero .subtitle {
-                font-size: 1.2rem;
             }
 
             .about-content {
@@ -606,16 +674,14 @@
         <!-- Home Page -->
         <div class="page active" id="home">
             <div class="hero">
-                <img src="path-to-your-image.jpg" alt="Om Dhembare" class="profile-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="profile-img-fallback" style="display: none;">OD</div>
-                <h1>Om Dhembare</h1>
+                <h1 class="hero-greeting">Hi, I'm Om Dhembare</h1>
                 <p class="subtitle">Data Analyst & Statistics Student</p>
                 <p class="description">
-                    Passionate data analyst with expertise in SQL, Python, R, and Power BI. Currently pursuing a Bachelor's in Statistics at York University while gaining hands-on experience at BMO Financial Group. I transform complex data into actionable insights that drive business decisions.
+                    Fast-learning and adaptable data analyst with a solid foundation in statistical analysis and data visualization. Delivering impactful insights through strong collaboration, continuous learning, and a passion for transforming data into actionable business solutions.
                 </p>
                 <div class="cta-buttons">
-                    <a href="#" class="btn btn-primary" data-page="projects">View My Work</a>
-                    <a href="My Resume.pdf" class="btn btn-secondary" download="Om_Dhembare_Resume.pdf">Download Resume</a>
+                    <a href="#" class="btn btn-primary" data-page="about">👤 Learn More About Me</a>
+                    <a href="My Resume.pdf" class="btn btn-secondary" download="Om_Dhembare_Resume.pdf">📄 Download Resume</a>
                 </div>
             </div>
         </div>
@@ -855,6 +921,24 @@
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-icons">
+            <a href="https://linkedin.com/in/OmDhembare" target="_blank" class="footer-icon" title="LinkedIn">
+                <span>💼</span>
+            </a>
+            <a href="mailto:omtimus.23@gmail.com" class="footer-icon" title="Email">
+                <span>✉️</span>
+            </a>
+            <a href="tel:647-517-1324" class="footer-icon" title="Phone">
+                <span>📞</span>
+            </a>
+        </div>
+        <div class="footer-text">
+            © 2025 Om Dhembare. All rights reserved.
+        </div>
+    </footer>
+
     <script>
         // Dark mode functionality
         const darkModeToggle = document.getElementById('darkModeToggle');
@@ -874,6 +958,7 @@
         // Navigation functionality
         const navLinks = document.querySelectorAll('.nav-link');
         const pages = document.querySelectorAll('.page');
+        const mainContent = document.querySelector('.main-content');
 
         function showPage(targetPage) {
             // Hide all pages
@@ -896,6 +981,13 @@
             const activeLink = document.querySelector(`[data-page="${targetPage}"]`);
             if (activeLink) {
                 activeLink.classList.add('active');
+            }
+
+            // Toggle home layout for full-screen gradient
+            if (targetPage === 'home') {
+                mainContent.classList.add('home-layout');
+            } else {
+                mainContent.classList.remove('home-layout');
             }
         }
 
